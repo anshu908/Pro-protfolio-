@@ -1,0 +1,377 @@
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Software Engineer Portfolio</title>
+       <style>
+         /* Resetting default styles */
+         * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+         }
+
+         /* Body and Font Settings */
+         body {
+           font-family: 'Arial', sans-serif;
+           background-color: #f4f4f9;
+           line-height: 1.6;
+           color: #333;
+           overflow-x: hidden;
+         }
+
+         /* Header and Navigation */
+         header {
+           background: #333;
+           color: #fff;
+           padding: 1rem 2rem;
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+         }
+
+         nav a {
+           color: #fff;
+           margin: 0 1.5rem;
+           text-decoration: none;
+           font-weight: bold;
+         }
+
+         nav a:hover {
+           text-decoration: underline;
+           color: #5a67d8;
+         }
+
+         .menu-btn {
+           font-size: 2rem;
+           cursor: pointer;
+           display: none;
+         }
+
+         /* Sidebar Navigation */
+         .sidebar {
+           height: 100%;
+           width: 0;
+           position: fixed;
+           z-index: 1000;
+           top: 0;
+           left: 0;
+           background-color: #333;
+           overflow-x: hidden;
+           transition: 0.3s;
+           padding-top: 60px;
+         }
+
+         .sidebar a {
+           padding: 8px 8px 8px 32px;
+           text-decoration: none;
+           font-size: 1.5rem;
+           color: #fff;
+           display: block;
+           transition: 0.3s;
+         }
+
+         .sidebar a:hover {
+           color: #5a67d8;
+         }
+
+         .sidebar .close-btn {
+           position: absolute;
+           top: 0;
+           right: 25px;
+           font-size: 2rem;
+           color: #fff;
+           cursor: pointer;
+         }
+
+         .sidebar.active {
+           width: 250px;
+         }
+
+         /* Hero Section */
+         #hero {
+           background-color: #5a67d8;
+           color: #fff;
+           text-align: center;
+           padding: 6rem 2rem;
+           height: 100vh;
+           position: relative;
+         }
+
+         #hero img {
+           position: absolute;
+           top: 20px;
+           right: 20px;
+           max-width: 200px;
+           border-radius: 50%;
+         }
+
+         #hero h1 {
+           font-size: 3rem;
+           margin-bottom: 1rem;
+         }
+
+         #hero p {
+           font-size: 1.2rem;
+           margin-bottom: 2rem;
+         }
+
+         .button {
+           background-color: #434190;
+           color: #fff;
+           padding: 10px 25px;
+           font-size: 1rem;
+           border-radius: 5px;
+           text-decoration: none;
+           transition: background-color 0.3s ease;
+         }
+
+         .button:hover {
+           background-color: #333;
+         }
+
+         /* About Section */
+         #about {
+           background: #fff;
+           text-align: center;
+           padding: 3rem 1rem;
+         }
+
+         #about h2 {
+           font-size: 2rem;
+           margin-bottom: 1rem;
+         }
+
+         #about p {
+           font-size: 1.1rem;
+           line-height: 1.8;
+           margin-top: 1rem;
+           max-width: 800px;
+           margin-left: auto;
+           margin-right: auto;
+         }
+
+         #about img {
+           max-width: 250px;
+           margin-top: 2rem;
+           border-radius: 10px;
+         }
+
+         /* Projects Section */
+         #projects {
+           background: #f9fafb;
+           text-align: center;
+           padding: 3rem 1rem;
+         }
+
+         .project-item {
+           background: #fff;
+           border-radius: 5px;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           padding: 20px;
+           margin-bottom: 2rem;
+           transition: transform 0.3s;
+           text-align: left;
+         }
+
+         .project-item:hover {
+           transform: scale(1.05);
+         }
+
+         .project-item img {
+           max-width: 100%;
+           border-radius: 5px;
+         }
+
+         .project-item h3 {
+           margin-top: 1rem;
+           font-size: 1.5rem;
+         }
+
+         .project-item p {
+           font-size: 1rem;
+           color: #666;
+         }
+
+         /* Contact Section */
+         #contact {
+           background: #333;
+           color: #fff;
+           text-align: center;
+           padding: 3rem 1rem;
+         }
+
+         #contact h2 {
+           font-size: 2rem;
+           margin-bottom: 1rem;
+         }
+
+         .contact-form input, .contact-form textarea {
+           width: 100%;
+           padding: 10px;
+           margin: 10px 0;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+           font-size: 1rem;
+         }
+
+         .contact-form button {
+           background: #5a67d8;
+           color: #fff;
+           padding: 10px 25px;
+           border: none;
+           border-radius: 5px;
+           font-size: 1rem;
+           cursor: pointer;
+           transition: background-color 0.3s ease;
+         }
+
+         .contact-form button:hover {
+           background-color: #434190;
+         }
+
+         /* Footer Section */
+         footer {
+           background: #222;
+           color: #ddd;
+           text-align: center;
+           padding: 1rem;
+         }
+
+         footer a {
+           color: #5a67d8;
+           text-decoration: none;
+           margin: 0 1rem;
+           font-size: 1.1rem;
+         }
+
+         footer a:hover {
+           text-decoration: underline;
+         }
+
+         /* Responsive Styles */
+         @media (max-width: 768px) {
+           .menu-btn {
+             display: block;
+             color: #fff;
+           }
+
+           #hero h1 {
+             font-size: 2.2rem;
+           }
+
+           .container {
+             padding: 15px;
+           }
+
+           #about p {
+             font-size: 1rem;
+           }
+
+           .project-item {
+             margin: 1rem 0;
+           }
+
+           .project-item h3 {
+             font-size: 1.2rem;
+           }
+         }
+       </style>
+     </head>
+     <body>
+
+       <!-- Header -->
+       <header>
+         <h1>Ansh - Software Engineer</h1>
+         <nav>
+           <a href="#hero">Home</a>
+           <a href="#about">About</a>
+           <a href="#projects">Projects</a>
+           <a href="#contact">Contact</a>
+         </nav>
+         <span class="menu-btn" onclick="toggleSidebar()">&#9776;</span>
+       </header>
+
+       <!-- Sidebar -->
+       <div id="mySidebar" class="sidebar">
+         <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
+         <a href="#hero">Home</a>
+         <a href="#about">About</a>
+         <a href="#projects">Projects</a>
+         <a href="#contact">Contact</a>
+       </div>
+
+       <!-- Hero Section -->
+       <section id="hero">
+         <h1>Hello! I'm Ansh</h1>
+         <p>I build efficient and scalable software solutions</p>
+         <img src="c:\Users\ANSH\Downloads\WhatsApp Image 2024-11-14 at 6.26.40 PM.jpeg" alt="Ansh - Portrait">
+         <a href="#contact" class="button">Get In Touch</a>
+       </section>
+
+       <!-- About Section -->
+       <section id="about">
+         <div class="container">
+           <h2>About Me</h2>
+           <p>I'm a passionate software engineer with expertise in full-stack development. My focus is on building scalable web applications, and I love diving into new technologies and tackling interesting problems.</p>
+           <img src="c:\Users\ANSH\Desktop\images (1).jfif" alt="About Image">
+         </div>
+       </section>
+
+       <!-- Projects Section -->
+       <section id="projects">
+         <div class="container">
+           <h2>Projects</h2>
+           <div class="project-item">
+             <img src="c:\Users\ANSH\Downloads\task.jfif" alt="Project 1">
+             <h3>Task Manager App</h3>
+             <p>A web app to efficiently manage tasks, with features like deadlines, priorities, and progress tracking.</p>
+             <a href="#" class="button">View Project</a>
+           </div>
+           <div class="project-item">
+             <img src="c:\Users\ANSH\Desktop\weater.jfif" alt="Project 2">
+             <h3>Weather App</h3>
+             <p>Provides real-time weather information using a public API, with location-based forecasts.</p>
+             <a href="#" class="button">View Project</a>
+           </div>
+         </div>
+       </section>
+
+       <!-- Contact Section -->
+       <section id="contact">
+         <div class="container">
+           <h2>Contact Me</h2>
+           <form class="contact-form" action="mailto:ytanshu20@gmail.com" method="post" enctype="text/plain">
+             <input type="text" name="name" placeholder="Your Name" required>
+             <input type="email" name="email" placeholder="Your Email" required>
+             <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+             <button type="submit">Send Message</button>
+           </form>
+         </div>
+       </section>
+
+       <!-- Footer -->
+       <footer>
+         <p>&copy; 2024 Ansh | Built with passion and purpose.</p>
+         <a href="#">LinkedIn</a>
+         <a href="#">GitHub</a>
+         <a href="#">Twitter</a>
+       </footer>
+
+       <!-- JavaScript -->
+       <script>
+         function toggleSidebar() {
+           document.getElementById("mySidebar").classList.toggle("active");
+         }
+
+         function closeSidebar() {
+           document.getElementById("mySidebar").classList.remove("active");
+         }
+       </script>
+     </body>
+     </html>
